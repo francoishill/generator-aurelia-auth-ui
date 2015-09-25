@@ -4,7 +4,6 @@ import {userDetailsService} from './details/userDetailsService';
 @inject(userDetailsService)
 export class Profile {
     busySaving = false;
-    savingError = '';
     previousFullname = '';
 
     constructor(userDetails) {
@@ -23,18 +22,12 @@ export class Profile {
             return;
 
         this.busySaving = true;
-        this.savingError = '';
         this.userDetails.saveDetails(this.details.FullName)
             .then(response => { 
                 console.log("Saved");
                 this.previousFullname = this.details.FullName;
             })
-            .catch(error => { this.savingError = error.response; })
             .then(r => { this.busySaving = false; });
-    }
-
-    clearSavingError() {
-        this.savingError = '';
     }
 
     canDeactivate() {

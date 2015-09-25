@@ -1,10 +1,13 @@
 <template>
     <require from="./nav/nav-bar"></require>
+    <require from="./utils/alerts/global-alerts"></require>
     <require from="bootstrap/css/bootstrap.css"></require>
 
     <nav-bar router.bind="router"></nav-bar>
 
     <div class="page-host">
+        <global-alerts></global-alerts>
+        
         <router-view></router-view>
     </div>
 </template>

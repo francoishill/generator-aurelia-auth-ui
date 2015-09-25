@@ -9,8 +9,6 @@ export class Logout {
     email = '';
     password = '';
 
-    logoutError = '';
-
     constructor(auth) {
         this.auth = auth;
     };
@@ -19,13 +17,6 @@ export class Logout {
         this.auth.logout()
             .then((response) => {
                 console.log("Logged out!");
-            })
-            .catch(error => {
-                this.logoutError = error.response;
             });
     }
-
-    logout() {
-
-    };
 }

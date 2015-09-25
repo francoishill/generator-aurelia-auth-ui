@@ -9,8 +9,6 @@ export class Register {
     email = '';
     password = '';
 
-    registerError = '';
-
     constructor(auth) {
         this.auth = auth;
     };
@@ -21,9 +19,6 @@ export class Register {
         return this.auth.signup(userInfo)
         .then((response) => {
             console.log("Registered!");
-        })
-        .catch(error => {
-            this.registerError = error.response;
         });
 
     };

@@ -9,8 +9,6 @@ export class Login {
     email = '';
     password = '';
 
-    loginError = '';
-
     constructor(auth) {
         this.auth = auth;
     };
@@ -21,9 +19,6 @@ export class Login {
         return this.auth.login(userInfo)
         .then((response) => {
             console.log("Logged in!");
-        })
-        .catch(error => {
-            this.loginError = error.response;
         });
 
     };
