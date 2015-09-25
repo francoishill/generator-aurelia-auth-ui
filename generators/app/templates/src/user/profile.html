@@ -1,0 +1,37 @@
+<template>
+<div class="container">
+<div class="row">
+
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Profile of ${details.FullName}</div>
+        
+        <div class="panel-body">
+            <form role="form" submit.delegate="saveDetails()">    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" value.one-time="details.Email" class="form-control" id="email" placeholder="Email" readonly="">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="fullname" value.bind="details.FullName" class="form-control" id="fullname" placeholder="Password">
+                </div>
+                
+                <div class="alert alert-danger alert-dismissible" role="alert" if.bind="savingError">
+                    <button type="button" class="close" click.trigger="clearSavingError()"><span aria-hidden="true">&times;</span></button>
+                    ${savingError}
+                </div>
+
+                <button class="btn btn-default pull-right" disabled.bind="busySaving" click.trigger="saveDetails()">
+                    <i class="fa fa-circle-o-notch fa-spin" if.bind="busySaving"></i> Update details
+                </button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</template>

@@ -1,0 +1,31 @@
+<template>
+<div class="container">
+<div class="row">
+
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-info">
+        <div class="panel-heading">Profile of ${details.FullName}</div>
+        
+        <div class="panel-body">
+            <form role="form" submit.delegate="login()">    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" value.bind="email" class="form-control" id="email" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" value.bind="password" class="form-control" id="password" placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn btn-default">Login</button>
+            </form>    
+            <hr>    
+            <div class="alert alert-danger" if.bind="loginError">${loginError}</div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</template>
