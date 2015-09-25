@@ -1,4 +1,5 @@
 var generators = require('yeoman-generator');
+var fs = require('fs');
 
 function trimEndingSlash(url) {
     while (url.length > 0 && url[url.length - 1] === "/") {
@@ -32,7 +33,6 @@ module.exports = generators.Base.extend({
 
         var templateFileRelativePathsToCopy = [
             '.editorconfig',
-            '.gitignore',
             '.jshintrc',
             '.npmignore',
             'aurelia.protractor.js',
@@ -122,6 +122,8 @@ module.exports = generators.Base.extend({
                 var relPath = nonTemplateFilesRelativePathsToCopy[i];
                 this.fs.copy(this.templatePath(relPath), this.destinationPath(relPath));
             }
+
+            fs.writeFileSync(this.destinationPath('.gitignore'), 'node_modules\njspm_packages\nbower_components\n.idea\n.DS_STORE\n/dist\nbuild/reports\n');
 
             done();
         }.bind(this));
