@@ -123,7 +123,16 @@ module.exports = generators.Base.extend({
                 this.fs.copy(this.templatePath(relPath), this.destinationPath(relPath));
             }
 
-            fs.writeFileSync(this.destinationPath('.gitignore'), 'node_modules\njspm_packages\nbower_components\n.idea\n.DS_STORE\n/dist\nbuild/reports\n');
+            fs.writeFileSync(this.destinationPath('.gitignore'), [
+                'src/_config/backend-config.js',
+                'node_modules',
+                'jspm_packages',
+                'bower_components',
+                '.idea',
+                '.DS_STORE',
+                '/dist',
+                'build/reports'
+            ]);
 
             done();
         }.bind(this));
