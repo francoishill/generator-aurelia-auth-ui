@@ -132,7 +132,7 @@ module.exports = generators.Base.extend({
                 '.DS_STORE',
                 '/dist',
                 'build/reports'
-            ]);
+            ].join("\n"));
 
             done();
         }.bind(this));
