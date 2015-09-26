@@ -16,7 +16,7 @@ export default class {
 
             config.map([
                 { route: ['','welcome'], name: './welcome/welcome', moduleId: './welcome/welcome', nav: true, title:'Welcome' },
-                { route: 'profile', name: 'user/profile', moduleId: 'user/profile', nav: true, title:'My Profile', auth: true },
+                { route: 'profile', name: 'user/profile', moduleId: 'user/profile', nav: false, title:'My Profile', auth: true },
                 { route: 'register', name: 'auth/register', moduleId: 'auth/register', nav: false, title:'Register', authRoute: true },
                 { route: 'login', name: 'auth/login', moduleId: 'auth/login', nav: false, title:'Login', authRoute: true },
                 { route: 'logout', name: 'auth/logout', moduleId: 'auth/logout', nav: false, title:'Logout', authRoute: true }

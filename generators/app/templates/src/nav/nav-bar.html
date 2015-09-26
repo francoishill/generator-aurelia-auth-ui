@@ -23,15 +23,27 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">  
-                <li if.bind="!isAuthenticated"><a href="/#/login">Login</a></li>
-                <li if.bind="!isAuthenticated"><a href="/#/register">Register</a></li>
+                <li if.bind="!isAuthenticated"><a href.bind="loginUrl">Login</a></li>
+                <li if.bind="!isAuthenticated"><a href.bind="registerUrl">Register</a></li>
 
                 <li if.bind="isAuthenticated" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title.bind="userDetails.Email">
-                        ${userDetails.FullName}<span class="caret"></span>
+                    <a href="#"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                       
+                        <span if.bind="!user">
+                            <i class="fa fa-spinner fa-spin fa-2x"></i>
+                            <span class="caret"></span>
+                        </span>
+                        <span if.bind="user" title.bind="user.Email"> 
+                            ${user.FullName} 
+                            <span class="caret"></span>
+                        </span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/#/logout">Logout</a></li>
+                        <li><a href.bind="userProfileUrl">My Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href.bind="logoutUrl">Logout</a></li>
                     </ul>
                 </li>
 

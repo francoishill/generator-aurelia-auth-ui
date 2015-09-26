@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';  
+import {inject} from 'aurelia-framework';
 import {globalAlertsService} from './globalAlertsService';
 
 @inject(globalAlertsService)
@@ -11,7 +11,7 @@ export class GlobalAlerts {
         return this.globalAlerts.getAlerts();
     }
 
-    removeAtIndex(index) {
-        this.globalAlerts.removeAlert(index);
+    removeAlert(alrt) {
+        this.globalAlerts.removeAlert(alrt);
     }
 }

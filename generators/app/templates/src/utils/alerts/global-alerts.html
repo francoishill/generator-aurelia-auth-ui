@@ -6,7 +6,7 @@
 
     <div class="alert alert-danger alert-dismissible" role="alert" repeat.for="alrt of alertList">
             <strong>${alrt.Title}</strong>
-            <button type="button" class="close" click.trigger="$parent.removeAtIndex($index)"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" click.trigger="$parent.removeAlert(alrt)"><span aria-hidden="true">&times;</span></button>
             
             <div>${alrt.Message}</div>
     </div>

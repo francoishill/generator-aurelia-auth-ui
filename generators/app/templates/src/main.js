@@ -1,6 +1,8 @@
 import 'bootstrap';
 import config from './_config/auth-config';
+import {Router} from 'aurelia-router';
 import {HttpClient} from 'aurelia-http-client';
+import {AuthService} from 'paulvanbladel/aurelia-auth';
 import {globalAlertsService} from './utils/alerts/globalAlertsService';
 
 export function configure(aurelia) {
@@ -28,6 +30,15 @@ function configureHttpClient(container) {
                 responseError: (error) => {
                     var globalAlerts = container.get(globalAlertsService);
                     globalAlerts.handleHttpResponseError(error);
+
+                    if (error.statusCode == 401) {
+                        var auth = container.get(AuthService);
+                        auth.logout();//Just incase we have a token stored
+                    
+                        var router = container.get(Router);
+                        router.navigate(router.generate('auth/login'));
+                    }
+
                     return Promise.reject(error);
                 }
             });

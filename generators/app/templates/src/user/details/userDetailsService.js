@@ -15,8 +15,8 @@ export class userDetailsService {
         return this.urlHelper.getApiV1Url('/user-details');
     }
 
-    getDetails() {
-        if (!this.getDetailsPromise)
+    getDetails(clearPromiseBefore) {
+        if (clearPromiseBefore || !this.getDetailsPromise)
             this.getDetailsPromise = this.http.get(this.getUrl());
 
         return this.getDetailsPromise;
