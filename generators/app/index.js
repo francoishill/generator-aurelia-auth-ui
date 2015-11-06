@@ -62,14 +62,16 @@ module.exports = generators.Base.extend({
             'src/user/details/userDetailsService.js',
             'src/user/profile.html',
             'src/user/profile.js',
+            'src/utils/alerts/global-alerts.html',
+            'src/utils/alerts/global-alerts.js',
+            'src/utils/alerts/globalAlertsService.js',
             'src/utils/urls/url-helper.js',
             'src/welcome/welcome.html',
             'src/welcome/welcome.js',
             'src/app.html',
             'src/app.js',
             'src/main.js',
-
-            'styles/styles.css',
+            'src/main.scss',
 
             'test/e2e/src/demo.spec.js',
             'test/e2e/src/skeleton.po.js',
