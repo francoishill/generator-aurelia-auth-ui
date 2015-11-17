@@ -9,6 +9,8 @@ var compilerOptions = require('../babel-options');
 var assign = Object.assign || require('object.assign');
 var notify = require("gulp-notify");
 var sass = require("gulp-sass");
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -42,6 +44,12 @@ gulp.task('build-scss', function () {
     .pipe(gulp.dest(paths.output));
 });
 
+gulp.task('build-images', function(){
+    gulp.src(paths.images)
+        .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+        .pipe(gulp.dest(paths.output + "img"));
+});
+
 // this task calls the clean task (located
 // in ./clean.js), then runs the build-system
 // and build-html tasks in parallel
@@ -49,7 +57,7 @@ gulp.task('build-scss', function () {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-scss'],
+    ['build-system', 'build-html', 'build-scss', 'build-images'],
     callback
   );
 });
